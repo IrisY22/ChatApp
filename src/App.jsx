@@ -13,7 +13,8 @@ import ModalClose from '@mui/joy/ModalClose';
 
 import io from 'socket.io-client';
 import { useState } from 'react';
-import AllChats from './cmps/AllChats';
+import AllChats from './cmps/AllMembers';
+import RenderChat from './cmps/RenderChat';
 const socket = io.connect('http://localhost:3001');
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
           <AllChats />
         </Drawer>
       </Box>
-
+      <RenderChat />
       <SendMsg onSendMsg={sendMessage} />
     </div >
   );

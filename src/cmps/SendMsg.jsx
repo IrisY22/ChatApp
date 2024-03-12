@@ -23,7 +23,7 @@ export default function SendMsg({ onSendMsg }) {
           minRows={2}
           placeholder="Send Message"
           size="sm"
-          variant="outlined"
+          variant="soft"
           style={{ width: '100%', padding: '10px', resize: 'none', borderRadius: '5px', border: '1px solid #ccc' }}
         />
       </Grid>

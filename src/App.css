@@ -1,10 +1,17 @@
 .App {
   text-align: center;
+
 }
 
 .send-msg {
+  border-top: #282c348d 1px solid;
   justify-content: center;
   align-items: center;
+}
+
+.render-chat {
+  justify-content: center;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
