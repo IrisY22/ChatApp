@@ -6,7 +6,7 @@ import Button from '@mui/joy/Button';
 
 export default function SendMsg({ onSendMsg }) {
   return (
-    <Grid className="App" container sx={{ position: 'fixed', bottom: 0, width: '100%', padding: '10px' }}>
+    <Grid className="send-msg" container sx={{ position: 'fixed', bottom: 0, width: '100%', padding: '10px' }}>
       <Button
         size="lg"
         variant="plain"
@@ -24,6 +24,7 @@ export default function SendMsg({ onSendMsg }) {
           placeholder="Send Message"
           size="sm"
           variant="outlined"
+          style={{ width: '100%', padding: '10px', resize: 'none', borderRadius: '5px', border: '1px solid #ccc' }}
         />
       </Grid>
       <Button
