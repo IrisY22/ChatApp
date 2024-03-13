@@ -1,3 +1,4 @@
+// import backgroungImg from './assets/backgroundImage.jpeg'
 import './App.css';
 import SendMsg from './cmps/SendMsg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,14 +19,25 @@ import RenderChat from './cmps/RenderChat';
 const socket = io.connect('http://localhost:3001');
 
 function App() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [msg, setMsg] = useState('');
+  const [msgs, setMsgs] = useState([]);
 
   const sendMessage = () => {
     // socket.emit
+    setMsgs([...msgs, msg]);
+    setMsg('')
   };
 
   return (
-    <div className="App">
+    <div className="App"
+    // style={{
+    //   backgroundImage: `url(${backgroungImg})`,
+    //   backgroundSize: 'cover',
+    //   backgroundPosition: 'center',
+    //   height: '98vh',
+    // }}
+    >
       <Box sx={{ display: 'flex', justifyContent: 'end' }}>
         <Button
           size="lg"
@@ -38,8 +50,8 @@ function App() {
           <AllChats />
         </Drawer>
       </Box>
-      <RenderChat />
-      <SendMsg onSendMsg={sendMessage} />
+      <RenderChat msgs={msgs} />
+      <SendMsg onSendMsg={sendMessage} setMsg={setMsg} msg={msg} />
     </div >
   );
 }

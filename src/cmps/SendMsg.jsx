@@ -4,7 +4,7 @@ import Grid from '@mui/joy/Grid';
 import Textarea from '@mui/joy/Textarea';
 import Button from '@mui/joy/Button';
 
-export default function SendMsg({ onSendMsg }) {
+export default function SendMsg({ onSendMsg, setMsg, msg }) {
   return (
     <Grid className="send-msg" container sx={{ position: 'fixed', bottom: 0, width: '100%', padding: '10px' }}>
       <Button
@@ -25,6 +25,8 @@ export default function SendMsg({ onSendMsg }) {
           size="sm"
           variant="soft"
           style={{ width: '100%', padding: '10px', resize: 'none', borderRadius: '5px', border: '1px solid #ccc' }}
+          value={msg}
+          onChange={(e) => setMsg(e.target.value)}
         />
       </Grid>
       <Button
