@@ -16,8 +16,8 @@ export default function RenderChat({ msgs }) {
         aria-labelledby="ellipsis-list-demo"
         sx={{ '--ListItemDecorator-size': '56px' }}
       >
-        {msgs.map((currMsg) => (
-          <ListItem>
+        {msgs.map((currMsg, index) => (
+          <ListItem key={index}>
             <ListItemDecorator>
               <Avatar src="/static/images/avatar/1.jpg" />
             </ListItemDecorator>

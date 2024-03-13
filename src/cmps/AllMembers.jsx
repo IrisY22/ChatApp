@@ -9,7 +9,7 @@ import ListItemButton from '@mui/joy/ListItemButton';
 import Typography from '@mui/joy/Typography';
 import SearchInput from './SearchInput';
 
-export default function AllMembers() {
+export default function AllMembers({ msgs }) {
 
   return (
     <>
@@ -38,7 +38,7 @@ export default function AllMembers() {
             <ListItemContent>
               <Typography level="title-sm">Sinpol Ben David</Typography>
               <Typography level="body-sm" noWrap>
-                Wish I could come, but I&apos;m out of town this Friday.
+                {msgs[msgs.length - 1]}
               </Typography>
             </ListItemContent>
           </ListItemButton>

@@ -1,9 +1,10 @@
 // import backgroungImg from './assets/backgroundImage.jpeg'
 import './App.css';
 import SendMsg from './cmps/SendMsg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComments } from '@fortawesome/free-regular-svg-icons'
+import { faUser } from '@fortawesome/free-regular-svg-icons'
 
 import Button from '@mui/joy/Button';
 import Box from '@mui/joy/Box';
@@ -14,40 +15,48 @@ import ModalClose from '@mui/joy/ModalClose';
 
 import io from 'socket.io-client';
 import { useState } from 'react';
-import AllChats from './cmps/AllMembers';
 import RenderChat from './cmps/RenderChat';
+import AllMembers from './cmps/AllMembers';
+import UserProfile from './cmps/UserProfile';
 const socket = io.connect('http://localhost:3001');
 
 function App() {
-  const [open, setOpen] = useState(false);
+  const [openAllMembers, setOpenAllMembers] = useState(false);
+  const [openUser, setOpenUser] = useState(false);
   const [msg, setMsg] = useState('');
   const [msgs, setMsgs] = useState([]);
 
   const sendMessage = () => {
     // socket.emit
+    if (!msg) return
     setMsgs([...msgs, msg]);
     setMsg('')
   };
 
   return (
-    <div className="App"
-    // style={{
-    //   backgroundImage: `url(${backgroungImg})`,
-    //   backgroundSize: 'cover',
-    //   backgroundPosition: 'center',
-    //   height: '98vh',
-    // }}
-    >
-      <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+    <div className="App">
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button
           size="lg"
           variant="plain"
           color="neutral"
-          onClick={() => setOpen(true)}
-        ><FontAwesomeIcon icon={faComments} /></Button>
-        <Drawer open={open} anchor="right" onClose={() => setOpen(false)}>
+          onClick={() => setOpenUser(true)}
+        ><FontAwesomeIcon icon={faUser} />
+        </Button>
+        <Drawer open={openUser} anchor="left" onClose={() => setOpenUser(false)}>
           <ModalClose />
-          <AllChats />
+          <UserProfile />
+        </Drawer>
+        <Button
+          size="lg"
+          variant="plain"
+          color="neutral"
+          onClick={() => setOpenAllMembers(true)}
+        ><FontAwesomeIcon icon={faComments} />
+        </Button>
+        <Drawer open={openAllMembers} anchor="right" onClose={() => setOpenAllMembers(false)}>
+          <ModalClose />
+          <AllMembers msgs={msgs} />
         </Drawer>
       </Box>
       <RenderChat msgs={msgs} />
